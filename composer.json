@@ -18,5 +18,5 @@
             "Bernardino\\EasyAuthenticator\\": "src/"
         }
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "stable"
 }
