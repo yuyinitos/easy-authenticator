@@ -8,7 +8,7 @@ For custom Laravel packages contact me.
 
 For more Laravel news visit www.codeanchor.net
 
-You can register issues here. 
+You can register issues <a href="https://github.com/lucabernardino/easy-authenticator/issues">here</a>. 
 
 #Setup
 
