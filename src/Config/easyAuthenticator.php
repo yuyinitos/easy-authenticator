@@ -34,17 +34,5 @@ return [
     'activation' => FALSE,
     // Set a subject line for the email.
     'email_subject' => 'Please activate your account.',
-
-    /**
-     * You can set session flash variables for following scenarios
-     * 1. When a user logs in.
-     * 2. When a user logs out
-     *
-     * If you wish to disable this functionality set flash_session
-     * to FALSE
-     */
-    'flash_session' => FALSE,
-    'flash_session_key' => 'message',
-    'flash_session_login' => "Welcome back",
-    'flash_session_logout' => 'See you again soon!',
+    
 ];
