@@ -1,4 +1,4 @@
-@extends('easyAuthenticator::auth')
+@extends('socialAuthenticator::auth')
 
 @section('content')
 <div class="container">
@@ -60,16 +60,16 @@
             </div>
         </div>
         <div class="col-md-6" style="margin-bottom: 20px">
-            <a href="/easyAuth/twitter" class="btn-lg btn btn-success col-md-12">Log in with Twitter</a>
+            <a href="/socialAuth/twitter" class="btn-lg btn btn-success col-md-12">Log in with Twitter</a>
         </div>
         <div class="col-md-6" style="margin-bottom: 20px">
-            <a href="/easyAuth/facebook" class="btn-lg btn btn-success col-md-12">Log in with Facebook</a>
+            <a href="/socialAuth/facebook" class="btn-lg btn btn-success col-md-12">Log in with Facebook</a>
         </div>
         <div class="col-md-6" style="margin-bottom: 20px">
-            <a href="/easyAuth/google" class="btn-lg btn btn-success col-md-12">Log in with Google</a>
+            <a href="/socialAuth/google" class="btn-lg btn btn-success col-md-12">Log in with Google</a>
         </div>
         <div class="col-md-6" style="margin-bottom: 20px">
-            <a href="/easyAuth/github" class="btn-lg btn btn-success col-md-12">Log in with Github</a>
+            <a href="/socialAuth/github" class="btn-lg btn btn-success col-md-12">Log in with Github</a>
         </div>
     </div>
 </div>
