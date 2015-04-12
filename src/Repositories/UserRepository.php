@@ -28,9 +28,9 @@ class UserRepository {
                         'username' => $userData->nickname,
                         'email' => $userData->email,
                         'avatar' => $userData->avatar,
-                        'gender' => $userData->user->gender,
-                        'birthday' => $userData->user->birthday,
-                        'locale' = $userData->user->locale,
+                        'gender' => $userData->user['gender'],
+                        'birthday' => $userData->user['birthday'],
+                        'locale' => $userData->user['locale'],
                     ]);
                     break;
                 
@@ -42,7 +42,7 @@ class UserRepository {
                         'username' => $userData->nickname,
                         'email' => $userData->email,
                         'avatar' => $userData->avatar,
-                        'locale' = $userData->user->lang,
+                        'locale' => $userData->user['lang'],
                     ]);
                     break;
                 
@@ -88,34 +88,34 @@ class UserRepository {
         switch ($provider) {
             case 'facebook':
                 $socialData = [
-                    'gender' => $userData->user->gender,
-                    'birthday' => $userData->user->birthday,
-                    'locale' = $userData->user->locale,
+                    'gender' => $userData->user['gender'],
+                    'birthday' => $userData->user['birthday'],
+                    'locale' => $userData->user['locale'],
                 ];
                 $dbData = [
                     'gender' => $user->gender,
                     'birthday' => $user->birthday,
-                    'locale' = $user->locale,
+                    'locale' => $user->locale,
                 ];
 
                 if (!empty(array_diff($socialData, $dbData))) {
-                    $user->gender = $userData->gender;
-                    $user->birthday = $userData->birthday;
-                    $user->locale = $userData->locale;
+                    $user->gender = $userData->user['gender'];
+                    $user->birthday = $userData->user['birthday'];
+                    $user->locale = $userData->user['locale'];
                     $user->save();
                 }
                 break;
             
             case 'twitter':
                 $socialData = [
-                    'lang' = $userData->user->locale,
+                    'locale' => $userData->user['lang'],
                 ];
                 $dbData = [
-                    'lang' = $user->locale,
+                    'locale' => $user->locale,
                 ];
 
                 if (!empty(array_diff($socialData, $dbData))) {
-                    $user->lang = $userData->lang;
+                    $user->locale = $userData->user['lang'];
                     $user->save();
                 }
                 break;            
