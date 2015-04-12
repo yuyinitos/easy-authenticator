@@ -10,7 +10,7 @@ return [
      * By default, after authenticating the user will be
      * redirected to /dashboard.
      */
-    'login_redirect' => '/',
+    'login_redirect' => '/dashboard',
 
     /*
      * The route to the login page. By default this is set to
