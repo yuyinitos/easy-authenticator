@@ -1,4 +1,4 @@
-<?php namespace Bernardino\EasyAuthenticator;
+<?php namespace Yuyinitos\SocialAuthenticator;
 
 use Illuminate\Auth\Guard;
 use Illuminate\Http\Request;
@@ -31,6 +31,6 @@ class AuthenticatorManager extends BaseController {
     public function logout()
     {
         $this->auth->logout();
-        return redirect(config('easyAuthenticator.logout_redirect'));
+        return redirect(config('socialAuthenticator.logout_redirect'));
     }
 }
