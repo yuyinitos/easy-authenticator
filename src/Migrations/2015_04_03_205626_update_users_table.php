@@ -15,7 +15,7 @@ class UpdateUsersTable extends Migration {
         Schema::table('users', function(Blueprint $table)
         {
             $table->string('username')->nullable();
-            $table->string('email')->unique()->default(time() . '-no-reply@EasyAuthenticator.com')->change();
+            $table->string('email')->unique()->default(time() . '-no-reply@SocialAuthenticator.com')->change();
             $table->string('avatar');
             $table->string('provider')->default('laravel');
             $table->string('provider_id')->unique();
