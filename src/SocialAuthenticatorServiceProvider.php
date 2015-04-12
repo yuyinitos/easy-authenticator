@@ -1,22 +1,22 @@
-<?php namespace Bernardino\EasyAuthenticator;
+<?php namespace Yuyinitos\SocialAuthenticator;
 
 use Illuminate\Support\ServiceProvider;
 
-class EasyAuthenticatorServiceProvider extends ServiceProvider {
+class SocialAuthenticatorServiceProvider extends ServiceProvider {
 
     protected $defer = false;
 
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__.'/Views', 'easyAuthenticator');
+        $this->loadViewsFrom(__DIR__.'/Views', 'socialAuthenticator');
 
         $this->publishes([
-            __DIR__.'/Config/EasyAuthenticator.php' => config_path('easyAuthenticator.php'),
-            __DIR__.'/Views' => base_path('resources/views/bernardino/easyAuthenticator'),
+            __DIR__.'/Config/SocialAuthenticator.php' => config_path('socialAuthenticator.php'),
+            __DIR__.'/Views' => base_path('resources/views/bernardino/socialAuthenticator'),
             __DIR__.'/Migrations' => base_path('database/migrations'),
         ]);
 
-        $this->app->config->set('auth.model', $this->app->config->get('easyAuthenticator.model'));
+        $this->app->config->set('auth.model', $this->app->config->get('socialAuthenticator.model'));
 
         include __DIR__.'/routes.php';
     }
@@ -25,7 +25,7 @@ class EasyAuthenticatorServiceProvider extends ServiceProvider {
     {
         $this->app->bind('authenticator', function($app)
         {
-            return $app->make('Bernardino\EasyAuthenticator\AuthenticatorManager');
+            return $app->make('Yuyinitos\SocialAuthenticator\AuthenticatorManager');
         });
         $this->registerSocialite();
         $this->registerUserModel();
@@ -38,13 +38,13 @@ class EasyAuthenticatorServiceProvider extends ServiceProvider {
 
     public function registerUserModel()
     {
-        $this->app->make('Bernardino\EasyAuthenticator\Models\User');
+        $this->app->make('Yuyinitos\SocialAuthenticator\Models\User');
     }
 
     public function provides()
     {
         return [
-            'Bernardino\EasyAuthenticator\AuthenticatorManager',
+            'Yuyinitos\SocialAuthenticator\AuthenticatorManager',
             '\Laravel\Socialite\SocialiteServiceProvider',
         ];
     }
