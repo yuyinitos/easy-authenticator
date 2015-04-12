@@ -11,7 +11,7 @@ class SocialAuthenticatorServiceProvider extends ServiceProvider {
         $this->loadViewsFrom(__DIR__.'/Views', 'socialAuthenticator');
 
         $this->publishes([
-            __DIR__.'/Config/SocialAuthenticator.php' => config_path('socialAuthenticator.php'),
+            __DIR__.'/Config/socialAuthenticator.php' => config_path('socialAuthenticator.php'),
             __DIR__.'/Views' => base_path('resources/views/bernardino/socialAuthenticator'),
             __DIR__.'/Migrations' => base_path('database/migrations'),
         ]);
