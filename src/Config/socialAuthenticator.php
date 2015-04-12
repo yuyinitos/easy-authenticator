@@ -3,14 +3,14 @@
 return [
 
     // The model we use to interact with the database.
-    'model' => 'Bernardino\EasyAuthenticator\Models\User',
+    'model' => 'Yuyinitos\SocialAuthenticator\Models\User',
 
     /**
      * The path to redirect to after successful authentication.
      * By default, after authenticating the user will be
      * redirected to /dashboard.
      */
-    'login_redirect' => 'dashboard',
+    'login_redirect' => '/',
 
     /*
      * The route to the login page. By default this is set to
