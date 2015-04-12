@@ -1,4 +1,4 @@
-@extends('easyAuthenticator::auth')
+@extends('socialAuthenticator::auth')
 
 @section('content')
 <div class="container-fluid">
