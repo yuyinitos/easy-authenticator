@@ -1,6 +1,6 @@
-<?php namespace Bernardino\EasyAuthenticator\Repositories;
+<?php namespace Yuyinitos\SocialAuthenticator\Repositories;
 
-use Bernardino\EasyAuthenticator\Models\User;
+use Yuyinitos\SocialAuthenticator\Models\User;
 use Config;
 
 class UserRepository {
@@ -8,7 +8,7 @@ class UserRepository {
     public function findByUserNameOrCreate($userData, $provider) {
 
         if (!isset($userData->email)) {
-            $userData->email = time() . '-no-reply@easyauthenticator.com';
+            $userData->email = time() . '-no-reply@socialauthenticator.com';
         }
 
         $user = User::where('provider_id', '=', $userData->id)->first();
