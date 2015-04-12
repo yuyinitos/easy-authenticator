@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Easy Authenticator</title>
+    <title>Social Authenticator</title>
 
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 
@@ -28,7 +28,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Easy Authenticator</a>
+            <a class="navbar-brand" href="#">Social Authenticator</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -43,8 +43,8 @@
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="{{config('easyAuthenticator.login_redirect')}}">My Dashboard</a></li>
-                            <li><a href="{{config('easyAuthenticator.logout')}}">Logout</a></li>
+                            <li><a href="{{config('socialAuthenticator.login_redirect')}}">My Dashboard</a></li>
+                            <li><a href="{{config('socialAuthenticator.logout')}}">Logout</a></li>
                         </ul>
                     </li>
                 @endif
