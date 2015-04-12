@@ -1,9 +1,9 @@
-<?php namespace Bernardino\EasyAuthenticator;
+<?php namespace Yuyinitos\SocialAuthenticator;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\PasswordBroker;
-use Bernardino\EasyAuthenticator\Traits\ResetsPasswords;
+use Yuyinitos\SocialAuthenticator\Traits\ResetsPasswords;
 
 class PasswordController extends Controller {
 
