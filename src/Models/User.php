@@ -1,4 +1,4 @@
-<?php namespace Bernardino\EasyAuthenticator\Models;
+<?php namespace Yuyinitos\SocialAuthenticator\Models;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
