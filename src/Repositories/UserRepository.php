@@ -12,11 +12,6 @@ class UserRepository {
         }
 
         $user = User::where('provider_id', '=', $userData->id)->first();
-        $emailExists = User::where('email', '=', $userData->email)->first();
-
-        if(!$user && $emailExists) {
-            return false;
-        }
 
         if(!$user) {
             $user = User::create([
