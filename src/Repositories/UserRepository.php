@@ -12,22 +12,57 @@ class UserRepository {
         }
 
         $user = User::where('provider_id', '=', $userData->id)->first();
+//        $emailExists = User::where('email', '=', $userData->email)->first();
+
+//        if(!$user && $emailExists) {
+//            return false;
+//        }
 
         if(!$user) {
-            $user = User::create([
-                'provider_id' => $userData->id,
-                'provider' => $provider,
-                'name' => $userData->name,
-                'username' => $userData->nickname,
-                'email' => $userData->email,
-                'avatar' => $userData->avatar,
-            ]);
+            switch ($provider) {
+                case 'facebook':
+                    $user = User::create([
+                        'provider_id' => $userData->id,
+                        'provider' => $provider,
+                        'name' => $userData->name,
+                        'username' => $userData->nickname,
+                        'email' => $userData->email,
+                        'avatar' => $userData->avatar,
+                        'gender' => $userData->user->gender,
+                        'birthday' => $userData->user->birthday,
+                        'locale' = $userData->user->locale,
+                    ]);
+                    break;
+                
+                case 'twitter':
+                    $user = User::create([
+                        'provider_id' => $userData->id,
+                        'provider' => $provider,
+                        'name' => $userData->name,
+                        'username' => $userData->nickname,
+                        'email' => $userData->email,
+                        'avatar' => $userData->avatar,
+                        'locale' = $userData->user->lang,
+                    ]);
+                    break;
+                
+                default:
+                    $user = User::create([
+                        'provider_id' => $userData->id,
+                        'provider' => $provider,
+                        'name' => $userData->name,
+                        'username' => $userData->nickname,
+                        'email' => $userData->email,
+                        'avatar' => $userData->avatar,
+                    ]);
+                    break;
+            }
         }
-        $this->checkIfUserNeedsUpdating($userData, $user);
+        $this->checkIfUserNeedsUpdating($provider, $userData, $user);
         return $user;
     }
 
-    public function checkIfUserNeedsUpdating($userData, $user) {
+    public function checkIfUserNeedsUpdating($provider, $userData, $user) {
 
         $socialData = [
             'avatar' => $userData->avatar,
@@ -49,6 +84,43 @@ class UserRepository {
             $user->username = $userData->nickname;
             $user->save();
         }
+
+        switch ($provider) {
+            case 'facebook':
+                $socialData = [
+                    'gender' => $userData->user->gender,
+                    'birthday' => $userData->user->birthday,
+                    'locale' = $userData->user->locale,
+                ];
+                $dbData = [
+                    'gender' => $user->gender,
+                    'birthday' => $user->birthday,
+                    'locale' = $user->locale,
+                ];
+
+                if (!empty(array_diff($socialData, $dbData))) {
+                    $user->gender = $userData->gender;
+                    $user->birthday = $userData->birthday;
+                    $user->locale = $userData->locale;
+                    $user->save();
+                }
+                break;
+            
+            case 'twitter':
+                $socialData = [
+                    'lang' = $userData->user->locale,
+                ];
+                $dbData = [
+                    'lang' = $user->locale,
+                ];
+
+                if (!empty(array_diff($socialData, $dbData))) {
+                    $user->lang = $userData->lang;
+                    $user->save();
+                }
+                break;            
+        }
+
     }
 
     public function accountIsActive($code) {
