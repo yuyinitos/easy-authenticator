@@ -1,6 +1,6 @@
-<?php namespace Bernardino\EasyAuthenticator;
+<?php namespace Yuyinitos\SocialAuthenticator;
 
-use Bernardino\EasyAuthenticator\Repositories\UserRepository as Users;
+use Yuyinitos\SocialAuthenticator\Repositories\UserRepository as Users;
 use Laravel\Socialite\Contracts\Factory as Socialite;
 use Illuminate\Contracts\Auth\Guard;
 use Request;
@@ -25,13 +25,13 @@ class Authentication extends AuthenticatorManager {
         $user = $this->users->findByUserNameOrCreate($this->getSocialUser($provider), $provider);
 
         if(!$user) {
-            return redirect(config('easyAuthenticator.login_page'))->with('session', 'Email is already in use');
+            return redirect(config('socialAuthenticator.login_page'))->with('session', 'Email is already in use');
         }
 
-        (config('easyAuthenticator.flash_session')) ?:
+        (config('socialAuthenticator.flash_session')) ?:
             Session::flash(
-                config('easyAuthenticator.flash_session_key'),
-                config('easyAuthenticator.flash_session_login')
+                config('socialAuthenticator.flash_session_key'),
+                config('socialAuthenticator.flash_session_login')
             );
         $this->auth->login($user, true);
 
@@ -47,6 +47,6 @@ class Authentication extends AuthenticatorManager {
     }
 
     public function userHasLoggedIn($user) {
-        return redirect(config('easyAuthenticator.login_redirect'));
+        return redirect(config('socialAuthenticator.login_redirect'));
     }
 }
