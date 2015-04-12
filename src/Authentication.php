@@ -39,25 +39,11 @@ class Authentication extends AuthenticatorManager {
     }
 
     private function getAuthorizationFirst($provider) {
-    	switch ($provider) {
-    	    
-    		case 'facebook':
-    			return Socialize::with($provider)
-    			    ->scopes(['email', 'user_about_me', 'user_birthday', 'user_hometown', 'user_website', 'offline_access', 'read_stream', 'publish_stream', 'read_friendlists'])
-    			    ->redirect();
-    			break;
-    			
-    		case 'google':
-    			return Socialize::with($provider)
-    			    ->redirect();
-    			break;
-    		
-    		case 'twitter':
-    			return Socialize::with($provider)
-    			    ->redirect();
-    			break;
-    	}
-        return $this->socialite->driver($provider)->redirect();
+        $scopes = config('services.'.$provider.'.scopes');
+        if (is_array($scopes))
+            return $this->socialite->driver($provider)->scopes(config('services.'.$provider.'.scopes'))->redirect();
+        else
+            return $this->socialite->driver($provider)->redirect();
     }
 
     private function getSocialUser($provider) {
