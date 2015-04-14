@@ -31,6 +31,6 @@ class AuthenticatorManager extends BaseController {
     public function logout()
     {
         $this->auth->logout();
-        return redirect(config('socialAuthenticator.logout_redirect'));
+        return null;
     }
 }
