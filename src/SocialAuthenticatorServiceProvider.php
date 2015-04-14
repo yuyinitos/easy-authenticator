@@ -12,7 +12,6 @@ class SocialAuthenticatorServiceProvider extends ServiceProvider {
 
         $this->publishes([
             __DIR__.'/Config/socialAuthenticator.php' => config_path('socialAuthenticator.php'),
-            __DIR__.'/Views' => base_path('resources/views/yuyinitos/socialAuthenticator'),
             __DIR__.'/Migrations' => base_path('database/migrations'),
         ]);
 
