@@ -48,7 +48,7 @@ class AuthController extends BaseController {
             Auth::loginUsingId($user->id);
         }
 
-        return redirect(config('socialAuthenticator.login_redirect'));
+        return $user;
     }
 
 }
