@@ -15,17 +15,13 @@ Route::controllers([
     'password' => 'Yuyinitos\SocialAuthenticator\PasswordController',
 ]);
 
-Route::get(config('socialAuthenticator.login_page'), function() {
-    return view('socialAuthenticator::login');
-});
-
-Route::get(config('socialAuthenticator.logout'), function() {
+Route::get('socialAuth/logout', function() {
     return $this->app['authenticator']->logout();
 });
 
-Route::get(config('socialAuthenticator.login_redirect'), function() {
+Route::get('socialAuth/user', function() {
     $user = Yuyinitos\SocialAuthenticator\Models\User::find(\Auth::id());
-    return view('socialAuthenticator::dashboard')->with('user', $user);
+    return $user;
 });
 
 Route::get('socialAuth/{provider?}', function($provider = null) {
