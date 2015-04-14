@@ -25,7 +25,7 @@ class Authentication extends AuthenticatorManager {
         $user = $this->users->findByUserNameOrCreate($this->getSocialUser($provider), $provider);
 
         if(!$user) {
-            return redirect(config('socialAuthenticator.login_page'))->with('session', 'Email is already in use');
+            return 'Email is already in use';
         }
 
         (config('socialAuthenticator.flash_session')) ?:
@@ -51,6 +51,6 @@ class Authentication extends AuthenticatorManager {
     }
 
     public function userHasLoggedIn($user) {
-        return redirect(config('socialAuthenticator.login_redirect'));
+        return $user;
     }
 }
