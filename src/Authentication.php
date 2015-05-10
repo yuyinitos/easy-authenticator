@@ -51,6 +51,6 @@ class Authentication extends AuthenticatorManager {
     }
 
     public function userHasLoggedIn($user) {
-        return $user;
+        return redirect(config('socialAuthenticator.login_redirect'));
     }
 }
