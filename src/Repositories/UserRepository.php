@@ -88,23 +88,23 @@ class UserRepository {
         switch ($provider) {
             case 'facebook':
                 if (array_key_exists('birthday', $userData->user)) {
-                $socialData = [
-                    'gender' => $userData->user['gender'],
-                    'birthday' => $userData->user['birthday'],
-                    'locale' => $userData->user['locale'],
-                ];
-                $dbData = [
-                    'gender' => $user->gender,
-                    'birthday' => $user->birthday,
-                    'locale' => $user->locale,
-                ];
-
-                if (!empty(array_diff($socialData, $dbData))) {
-                    $user->gender = $userData->user['gender'];
-                    $user->birthday = $userData->user['birthday'];
-                    $user->locale = $userData->user['locale'];
-                    $user->save();
-                }
+                    $socialData = [
+                        'gender' => $userData->user['gender'],
+                        'birthday' => $userData->user['birthday'],
+                        'locale' => $userData->user['locale'],
+                    ];
+                    $dbData = [
+                        'gender' => $user->gender,
+                        'birthday' => $user->birthday,
+                        'locale' => $user->locale,
+                    ];
+    
+                    if (!empty(array_diff($socialData, $dbData))) {
+                        $user->gender = $userData->user['gender'];
+                        $user->birthday = $userData->user['birthday'];
+                        $user->locale = $userData->user['locale'];
+                        $user->save();
+                    }
                 }
                 break;
             
