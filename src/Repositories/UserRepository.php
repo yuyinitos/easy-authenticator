@@ -87,6 +87,7 @@ class UserRepository {
 
         switch ($provider) {
             case 'facebook':
+                if (array_key_exists('birthday', $userData->user)) {
                 $socialData = [
                     'gender' => $userData->user['gender'],
                     'birthday' => $userData->user['birthday'],
@@ -103,6 +104,7 @@ class UserRepository {
                     $user->birthday = $userData->user['birthday'];
                     $user->locale = $userData->user['locale'];
                     $user->save();
+                }
                 }
                 break;
             
