@@ -24,13 +24,13 @@ class UserRepository {
                     $user = User::create([
                         'provider_id' => $userData->id,
                         'provider' => $provider,
-                        'name' => $userData->name,
-                        'username' => $userData->nickname,
-                        'email' => $userData->email,
-                        'avatar' => $userData->avatar,
-                        'gender' => $userData->user['gender'],
-                        'birthday' => $userData->user['birthday'],
-                        'locale' => $userData->user['locale'],
+                        'name' => isset($userData->name) ? $userData->name : null,
+                        'username' => isset($userData->nickname) ? $userData->nickname : null,
+                        'email' => isset($userData->email) ? $userData->email : null,
+                        'avatar' => isset($userData->avatar) $userData->avatar : null,
+                        'gender' => isset($userData->user['gender']) ? $userData->user['gender'] : null,
+                        'birthday' => isset($userData->user['birthday']) ? $userData->user['birthday'] : null,
+                        'locale' => isset($userData->user['locale']) : $userData->user['locale'] : null,
                     ]);
                     break;
                 
@@ -38,11 +38,11 @@ class UserRepository {
                     $user = User::create([
                         'provider_id' => $userData->id,
                         'provider' => $provider,
-                        'name' => $userData->name,
-                        'username' => $userData->nickname,
-                        'email' => $userData->email,
-                        'avatar' => $userData->avatar,
-                        'locale' => $userData->user['lang'],
+                        'name' => isset($userData->name) ? $userData->name : null,
+                        'username' => isset($userData->nickname) ? $userData->nickname : null,
+                        'email' => isset($userData->email) ? $userData->email : null,
+                        'avatar' => isset($userData->avatar) ? $userData->avatar : null,
+                        'locale' => isset($userData->user['lang']) ? $userData->user['lang'] : null,
                     ]);
                     break;
                 
@@ -50,10 +50,10 @@ class UserRepository {
                     $user = User::create([
                         'provider_id' => $userData->id,
                         'provider' => $provider,
-                        'name' => $userData->name,
-                        'username' => $userData->nickname,
-                        'email' => $userData->email,
-                        'avatar' => $userData->avatar,
+                        'name' => isset($userData->name) ? $userData->name : null,
+                        'username' => isset($userData->nickname) ? $userData->nickname : null,
+                        'email' => isset($userData->email) ? $userData->email : null,
+                        'avatar' => isset($userData->avatar) ? $userData->avatar : null,
                     ]);
                     break;
             }
