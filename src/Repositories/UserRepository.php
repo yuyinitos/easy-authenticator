@@ -27,10 +27,10 @@ class UserRepository {
                         'name' => isset($userData->name) ? $userData->name : null,
                         'username' => isset($userData->nickname) ? $userData->nickname : null,
                         'email' => isset($userData->email) ? $userData->email : null,
-                        'avatar' => isset($userData->avatar) $userData->avatar : null,
+                        'avatar' => isset($userData->avatar) ? $userData->avatar : null,
                         'gender' => isset($userData->user['gender']) ? $userData->user['gender'] : null,
                         'birthday' => isset($userData->user['birthday']) ? $userData->user['birthday'] : null,
-                        'locale' => isset($userData->user['locale']) : $userData->user['locale'] : null,
+                        'locale' => isset($userData->user['locale']) ? $userData->user['locale'] : null,
                     ]);
                     break;
                 
